@@ -5,10 +5,20 @@ below an 80% attendance target.
 
 ## Features
 
-- **Students** — capture name, programme of study, year of study, and semester.
+- **Students** — capture student number, name, programme of study, year of study, and semester.
 - **Courses** — capture course code, course name, and the programme/year/semester it belongs to.
 - **Take Attendance** — pick a course and date, mark each matching student present/absent, edit or delete past sessions.
-- **Dashboard** — per-student, per-course attendance percentage, average attendance, and an automatic "BELOW 80%" flag for anyone under the target. Filter by course or by flagged-only.
+- **Dashboard** — a pie chart of on-track vs. below-target records, plus an attendance chart that adapts to class size: individual bars per student for smaller groups, or a distribution histogram once there are too many students to plot one-by-one. A detailed, filterable table below still lists every student by name and student number with an automatic "BELOW 80%" flag.
+- **NUST branding** — navy/gold/red corporate colours and the NUST logo in the header.
+
+### About the logo
+
+`public/nust-logo.png` was cropped from a screenshot of the myNUST portal, so
+it's a placeholder — it carries a bit of background image and won't be crisp
+at large sizes. For a clean result, replace that file with the university's
+official logo asset (ideally a transparent PNG or SVG from NUST's brand
+guidelines or marketing office) and keep the filename `nust-logo.png`, or
+update the `src` in `app/page.tsx` if you rename it.
 
 Data is stored in the browser's `localStorage` — no database or sign-in
 required. This makes it easy to deploy and use immediately, but data will not

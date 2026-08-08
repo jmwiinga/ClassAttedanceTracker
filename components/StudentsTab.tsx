@@ -8,6 +8,7 @@ const SEMESTERS: Semester[] = ["Semester 1", "Semester 2", "Semester 3"];
 
 export default function StudentsTab() {
   const { students, addStudent, removeStudent } = useData();
+  const [studentNumber, setStudentNumber] = useState("");
   const [name, setName] = useState("");
   const [programme, setProgramme] = useState("");
   const [yearOfStudy, setYearOfStudy] = useState(1);
@@ -16,11 +17,22 @@ export default function StudentsTab() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !programme.trim()) {
-      setError("Enter the student's name and programme of study.");
+    if (!studentNumber.trim() || !name.trim() || !programme.trim()) {
+      setError("Enter the student number, name and programme of study.");
       return;
     }
-    addStudent({ name: name.trim(), programme: programme.trim(), yearOfStudy, semester });
+    if (students.some((s) => s.studentNumber.toLowerCase() === studentNumber.trim().toLowerCase())) {
+      setError("A student with this student number is already enrolled.");
+      return;
+    }
+    addStudent({
+      studentNumber: studentNumber.trim(),
+      name: name.trim(),
+      programme: programme.trim(),
+      yearOfStudy,
+      semester,
+    });
+    setStudentNumber("");
     setName("");
     setProgramme("");
     setError("");
@@ -34,6 +46,17 @@ export default function StudentsTab() {
       >
         <h2 className="font-serif text-lg font-semibold mb-4">Enrol a student</h2>
         <div className="space-y-3">
+          <div>
+            <label className="block text-xs font-medium text-ink-faint mb-1">
+              Student number
+            </label>
+            <input
+              className="w-full border border-ink/20 rounded-sm px-3 py-2 text-sm focus-ring font-mono"
+              value={studentNumber}
+              onChange={(e) => setStudentNumber(e.target.value)}
+              placeholder="e.g. 224333444"
+            />
+          </div>
           <div>
             <label className="block text-xs font-medium text-ink-faint mb-1">
               Full name
@@ -112,6 +135,7 @@ export default function StudentsTab() {
           <table className="w-full text-sm">
             <thead>
               <tr className="text-left text-xs uppercase tracking-wide text-ink-faint border-b border-ink/10">
+                <th className="px-5 py-3 font-medium">Student No.</th>
                 <th className="px-5 py-3 font-medium">Name</th>
                 <th className="px-5 py-3 font-medium">Programme</th>
                 <th className="px-5 py-3 font-medium">Year</th>
@@ -122,6 +146,7 @@ export default function StudentsTab() {
             <tbody>
               {students.map((s) => (
                 <tr key={s.id} className="border-b border-ink/5 last:border-0">
+                  <td className="px-5 py-3 font-mono text-xs">{s.studentNumber}</td>
                   <td className="px-5 py-3 font-medium">{s.name}</td>
                   <td className="px-5 py-3 text-ink-light">{s.programme}</td>
                   <td className="px-5 py-3 text-ink-light">{s.yearOfStudy}</td>

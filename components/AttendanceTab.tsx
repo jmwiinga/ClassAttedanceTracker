@@ -138,7 +138,12 @@ export default function AttendanceTab() {
                   key={s.id}
                   className="flex items-center justify-between px-5 py-3"
                 >
-                  <span className="text-sm font-medium">{s.name}</span>
+                  <span className="text-sm">
+                    <span className="font-mono text-xs text-ink-faint mr-2">
+                      {s.studentNumber}
+                    </span>
+                    <span className="font-medium">{s.name}</span>
+                  </span>
                   <button
                     onClick={() => toggle(s.id)}
                     className={[

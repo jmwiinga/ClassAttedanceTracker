@@ -140,6 +140,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
             : Math.round((sessionsAttended / sessionsHeld) * 1000) / 10;
         result.push({
           studentId: student.id,
+          studentNumber: student.studentNumber,
           studentName: student.name,
           programme: student.programme,
           yearOfStudy: student.yearOfStudy,

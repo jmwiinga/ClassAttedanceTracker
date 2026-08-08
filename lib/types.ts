@@ -2,6 +2,7 @@ export type Semester = "Semester 1" | "Semester 2" | "Semester 3";
 
 export interface Student {
   id: string;
+  studentNumber: string;
   name: string;
   programme: string;
   yearOfStudy: number;
@@ -27,6 +28,7 @@ export interface AttendanceRecord {
 
 export interface StudentCourseStat {
   studentId: string;
+  studentNumber: string;
   studentName: string;
   programme: string;
   yearOfStudy: number;

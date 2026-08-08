@@ -8,22 +8,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // NUST corporate palette, sampled from the myNUST portal
         ink: {
-          DEFAULT: "#16233F",
-          light: "#25365C",
-          faint: "#4A5A80",
+          DEFAULT: "#1B2C5D", // NUST navy
+          light: "#2C4173",
+          faint: "#5B6C99",
         },
         paper: {
           DEFAULT: "#F6F4EE",
           card: "#FFFFFF",
         },
         brass: {
-          DEFAULT: "#B8863B",
-          light: "#D8AE6F",
+          DEFAULT: "#FCAF17", // NUST gold
+          light: "#FDC24E",
         },
+        nustred: "#DC332E", // NUST red
         good: "#2F6B4F",
         warn: "#B8863B",
-        bad: "#A33D3D",
+        bad: "#DC332E",
       },
       fontFamily: {
         serif: ["'Source Serif 4'", "Georgia", "serif"],

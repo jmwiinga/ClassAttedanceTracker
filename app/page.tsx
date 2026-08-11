@@ -55,7 +55,7 @@ export default function Home() {
               <div className="hidden sm:block h-8 w-px bg-white/20" />
               <div className="hidden sm:block">
                 <p className="text-[10px] uppercase tracking-[0.22em] text-brass font-medium">
-                  Attendance Ledger
+                  Attendance Register
                 </p>
                 <h1 className="font-serif text-lg font-semibold text-white leading-tight">
                   Register
